@@ -14,11 +14,13 @@ import UIKit
 protocol VolatileModifier: Codable {
     var isActive: Bool { get }
 
+    /// Update the oldVelocity with influence of volatile modifier.
     func applyVelocityModifier(to oldVelocity: Float, with modifier: Float) -> Float
+    /// Update attributes of volatile modifier based on current month strength.
     func update(currentMonth: Int)
 }
 
-// Generic class inheritate from VolatileModifier to force subclasses conform to codable
+// Generic class inherited from VolatileModifier to force subclasses conform to codable
 class Volatile: VolatileModifier, Codable {
     var isActive = false
 
